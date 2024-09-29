@@ -26,7 +26,8 @@ jobs:
         key: ${{ runner.os }}-torch-
     - name: Install dependencies
       run: |
-        pip install -e '.[test]'
+        pip install -e .
+        pip install pytest
     - name: Run tests
       run: |
         python -m pytest -s
