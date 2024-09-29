@@ -10,6 +10,9 @@ setup(
     python_requires=">=3.9",
     author="Sukhbinder Singh",
     url="https://github.com/sukhbinder/winzy",
+    extra_require={
+      "test":["pytest"],  
+    },
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
