@@ -34,3 +34,34 @@ Winzy is a collection of command-line tools designed to make system administrati
 pip install winzy
 ```
 
+## Developing your plugin
+------------------------
+
+You'll need to have [cookiecutter](https://cookiecutter.readthedocs.io/) installed.
+
+```bash
+pipx install cookiecutter
+```
+
+Regular `pip` will work OK too.
+
+## Usage
+
+Run `cookiecutter gh:sukhbinder/winzy-plugin` and then answer the prompts. Here's an example run:
+
+```bash
+cookiecutter gh:sukhbinder/winzy-plugin
+```
+
+This will show this. Fill this and the template is ready. Just add your code.
+
+```
+plugin_name []: winzy plugin template demo
+description []: Demonstrating https://github.com/sukhbinder/winzy-plugin
+hyphenated [winzy-plugin-template-demo]:
+underscored [winzy_plugin_template_demo]:
+github_username []: sukhbinder
+author_name []: Sukhbinder Singh
+```
+
+
