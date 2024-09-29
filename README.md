@@ -11,7 +11,9 @@ A plugin-based CLI toolset for Windows, built on top of the Python language.
 **Overview**
 -----------
 
-Winzy is a collection of command-line tools designed to make system administration and development tasks easier on Windows. The project takes a plugin-based approach, allowing users to extend its functionality by creating custom plugins.
+Winzy is a collection of command-line tools designed to make working with windows easier. The project takes a plugin-based approach, allowing users to extend its functionality by creating custom plugins.
+
+There are few plugins that i am activiley using. I will soon add all of them here.
 
 **Features**
 ------------
