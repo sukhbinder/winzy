@@ -15,6 +15,8 @@ Winzy is a collection of command-line tools designed to make working with window
 
 There are few plugins that i am activiley using. I will soon add all of them here.
 
+[Here's why?](https://sukhbinder.wordpress.com/2024/11/01/winzy/) 
+
 **Features**
 ------------
 
