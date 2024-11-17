@@ -1,6 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
+
 def get_long_description():
     with open(
         os.path.join(os.path.dirname(os.path.abspath(__file__)), "README.md"),
@@ -8,20 +9,23 @@ def get_long_description():
     ) as fp:
         return fp.read()
 
+
 setup(
     name="winzy",
-    version="0.0.1",
+    version="0.0.2",
     description="CLI tools for windows. A plugin based approach.",
     packages=find_packages(),
     long_description=get_long_description(),
     long_description_content_type="text/markdown",
     entry_points={"console_scripts": ["winzy = winzy.cli:main"]},
-    install_requires =["pluggy",],
+    install_requires=[
+        "pluggy",
+    ],
     python_requires=">=3.9",
     author="Sukhbinder Singh",
     url="https://github.com/sukhbinder/winzy",
     extra_require={
-      "test":["pytest"],  
+        "test": ["pytest"],
     },
     project_urls={
         "Documentation": "https://sukhbinder.wordpress.com",
@@ -43,5 +47,4 @@ setup(
         "Programming Language :: Python :: 3.12",
         "Programming Language :: Python :: 3.13",
     ],
-
-    )
+)

@@ -15,8 +15,6 @@ Winzy is a collection of command-line tools designed to make working with window
 
 There are few plugins that i am activiley using. I will soon add all of them here.
 
-[Here's why?](https://sukhbinder.wordpress.com/2024/11/01/winzy/) 
-
 **Features**
 ------------
 
@@ -29,7 +27,7 @@ There are few plugins that i am activiley using. I will soon add all of them her
 ----------------
 
 *   Python 3.9 or later
-*   The `pluggy` library for plugin management
+*   The `pluggy` library for plugin ment
 
 **Installation**
 ----------------
@@ -68,4 +66,27 @@ github_username []: sukhbinder
 author_name []: Sukhbinder Singh
 ```
 
+# List of Available Plugins
+Here's the list of plugin available in pypi.
+
+- [winzy-banner](https://pypi.org/project/winzy-banner/)	
+- [winzy-calendar](https://pypi.org/project/winzy-calendar/)	
+- [winzy-checkmail](https://pypi.org/project/winzy-checkmail/)	
+- [winzy-cut](https://pypi.org/project/winzy-cut/)		
+- [winzy-days-till](https://pypi.org/project/winzy-days-till/)	
+- [winzy-extract](https://pypi.org/project/winzy-extract/)		
+- [winzy-laptop-battery](https://pypi.org/project/winzy-laptop-battery/)	
+- [winzy-notify](https://pypi.org/project/winzy-notify/)		
+- [winzy-outlook-meetings](https://pypi.org/project/winzy-outlook-meetings/)	
+- [winzy-pdf-to-text](https://pypi.org/project/winzy-pdf-to-text/)	
+- [winzy-screencapture](https://pypi.org/project/winzy-screencapture/)	
+- [winzy-screenshot](https://pypi.org/project/winzy-screenshot/)		
+- [winzy-text-on-image](https://pypi.org/project/winzy-text-on-image/)	
+- [winzy-text-to-image](https://pypi.org/project/winzy-text-to-image/)	
+- [winzy-txt2img-val-town](https://pypi.org/project/winzy-txt2img-val-town/)		
+- [winzy-wc](https://pypi.org/project/winzy-wc/)	
+- [winzy-weather](https://pypi.org/project/winzy-weather/)	
+- [winzy-webcam](https://pypi.org/project/winzy-webcam/)		
+- [winzy-whitelist](https://pypi.org/project/winzy-whitelist/)	
+- [winzy-win-geometry](https://pypi.org/project/winzy-win-geometry/)	
 

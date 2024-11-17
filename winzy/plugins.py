@@ -1,22 +1,18 @@
 import pluggy
 from .hookspecs import winzySpec
-import pkg_resources
+
 import sys
 from runpy import run_module
 
 pm = pluggy.PluginManager("winzy")
 pm.add_hookspecs(winzySpec)
 
-def load_plugins2():
-    if not getattr(sys, "_called_from_test", False):
-        for entry_point in pkg_resources.iter_entry_points("winzy.plugins"):
-            plugin=entry_point.load()
-            pm.register(plugin)
 
 def load_plugins():
     if not getattr(sys, "_called_from_test", False):
         # Only load plugins if not running tests
         pm.load_setuptools_entrypoints("winzy.plugins")
+
 
 def get_plugins(args):
     plugins = []
