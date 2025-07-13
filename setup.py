@@ -12,7 +12,7 @@ def get_long_description():
 
 setup(
     name="winzy",
-    version="0.0.2",
+    version="0.0.3",
     description="CLI tools for windows. A plugin based approach.",
     packages=find_packages(),
     long_description=get_long_description(),
