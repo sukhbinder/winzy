@@ -1,5 +1,6 @@
-from setuptools import setup, find_packages
 import os
+
+from setuptools import find_packages, setup
 
 
 def get_long_description():
@@ -12,14 +13,15 @@ def get_long_description():
 
 setup(
     name="winzy",
-    version="0.0.3",
+    version="0.0.4",
     description="CLI tools for windows. A plugin based approach.",
     packages=find_packages(),
     long_description=get_long_description(),
     long_description_content_type="text/markdown",
     entry_points={"console_scripts": ["winzy = winzy.cli:main"]},
     install_requires=[
-        "pluggy","pip",
+        "pluggy",
+        "pip",
     ],
     python_requires=">=3.9",
     author="Sukhbinder Singh",
