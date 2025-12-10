@@ -51,14 +51,18 @@ def test_add_alias_empty_parts(capsys):
 
     add_alias(Args())
     captured = capsys.readouterr()
-    assert "Invalid alias format. Both alias name and command are required" in captured.out
+    assert (
+        "Invalid alias format. Both alias name and command are required" in captured.out
+    )
 
     class Args2:
         alias_cmd = "alias="
 
     add_alias(Args2())
     captured = capsys.readouterr()
-    assert "Invalid alias format. Both alias name and command are required" in captured.out
+    assert (
+        "Invalid alias format. Both alias name and command are required" in captured.out
+    )
 
 
 def test_add_alias_success(monkeypatch, tmp_path):
@@ -128,8 +132,9 @@ def test_add_alias_already_exists_input_yes(monkeypatch, tmp_path):
 
 def test_install_cmd_with_mock():
     # Test install_cmd function with mocked pip installation
-    with mock.patch('winzy.plugins.run_module') as mock_run_module, \
-         mock.patch('winzy.plugins.sys.argv', []):
+    with mock.patch("winzy.plugins.run_module") as mock_run_module, mock.patch(
+        "winzy.plugins.sys.argv", []
+    ):
 
         class Args:
             packages = ["test-package"]
@@ -146,8 +151,9 @@ def test_install_cmd_with_mock():
 
 def test_install_cmd_with_flags():
     # Test install_cmd with various flags
-    with mock.patch('winzy.plugins.run_module') as mock_run_module, \
-         mock.patch('winzy.plugins.sys.argv', []) as mock_argv:
+    with mock.patch("winzy.plugins.run_module") as mock_run_module, mock.patch(
+        "winzy.plugins.sys.argv", []
+    ) as mock_argv:
 
         class Args:
             packages = ["test-package"]
@@ -170,10 +176,11 @@ def test_get_plugins_no_plugins(capsys):
 
 
 def test_main_with_install_command():
-    with mock.patch("sys.argv", ["winzy", "install", "test-package"]), \
-         mock.patch("winzy.cli.install_plugin") as mock_install_plugin, \
-         mock.patch("winzy.plugins.load_plugins"), \
-         mock.patch("winzy.plugins.run_module"):  # Mock run_module to prevent actual pip execution
+    with mock.patch("sys.argv", ["winzy", "install", "test-package"]), mock.patch(
+        "winzy.cli.install_plugin"
+    ) as mock_install_plugin, mock.patch("winzy.plugins.load_plugins"), mock.patch(
+        "winzy.plugins.run_module"
+    ):  # Mock run_module to prevent actual pip execution
 
         main()
 
@@ -191,12 +198,14 @@ def test_main_with_add_alias_command(monkeypatch, tmp_path):
     home_dir = tmp_path
     local_bin_dir = home_dir / ".local" / "bin"
 
-    with mock.patch("sys.argv", ["winzy", "add-alias", "test=echo test"]), \
-         mock.patch("winzy.plugins.load_plugins"), \
-         monkeypatch.context() as m:
+    with mock.patch("sys.argv", ["winzy", "add-alias", "test=echo test"]), mock.patch(
+        "winzy.plugins.load_plugins"
+    ), monkeypatch.context() as m:
 
-        m.setattr('os.path.expanduser', lambda x: str(home_dir))
-        m.setattr('builtins.input', lambda _: "y")  # Automatically confirm overwrite if needed
+        m.setattr("os.path.expanduser", lambda x: str(home_dir))
+        m.setattr(
+            "builtins.input", lambda _: "y"
+        )  # Automatically confirm overwrite if needed
 
         main()
 
