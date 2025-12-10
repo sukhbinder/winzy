@@ -105,9 +105,10 @@ def main():
         "alias_cmd", help="Alias command in format 'alias=command', e.g., 'ls=dir $*'"
     )
     alias_parser.set_defaults(func=add_alias)
+    load_plugins()
 
     pm.hook.register_commands(subparser=subparser)
-    load_plugins()
+
     args = parser.parse_args()
 
     if args.command:

@@ -11,5 +11,5 @@ def setup_test_environment():
     sys._called_from_test = True
     yield
     # Clean up after tests
-    if hasattr(sys, '_called_from_test'):
-        delattr(sys, '_called_from_test')
+    if hasattr(sys, "_called_from_test"):
+        delattr(sys, "_called_from_test")
