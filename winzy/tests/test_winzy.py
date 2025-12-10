@@ -1,6 +1,7 @@
-import sys
 from unittest import mock
+import sys
 import pytest
+
 from winzy.cli import main
 
 

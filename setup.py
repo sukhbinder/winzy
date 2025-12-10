@@ -19,7 +19,8 @@ setup(
     long_description_content_type="text/markdown",
     entry_points={"console_scripts": ["winzy = winzy.cli:main"]},
     install_requires=[
-        "pluggy","pip",
+        "pluggy",
+        "pip",
     ],
     python_requires=">=3.9",
     author="Sukhbinder Singh",

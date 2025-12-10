@@ -66,6 +66,26 @@ github_username []: sukhbinder
 author_name []: Sukhbinder Singh
 ```
 
+### Creating Command Aliases
+
+Winzy includes an `add-alias` command that allows you to create custom command aliases by generating Windows batch files. This is especially useful for creating shortcuts to commonly used commands.
+
+```bash
+winzy add-alias ls=dir $*
+winzy add-alias cp=copy $*
+winzy add-alias open=start $*
+winzy add-alias search=start https://www.google.co.uk/search?q=$*
+winzy add-alias newsuk=start http://news.google.co.uk
+winzy add-alias cat=type $*
+winzy add-alias cal=python -m calendar $1 $2
+winzy add-alias serve=set ptemp=%cd%  & cd $* & start python -m SimpleHTTPServer 8888 & cd %ptemp%
+winzy add-alias web=python -m webbrowser -t $*
+winzy add-alias news=start http://news.google.co.in
+winzy add-alias touch=python -c "open('$1','w').close()"
+```
+
+The created aliases are stored as batch files in `~/.local/bin/` directory and will be available from your command line once that directory is in your PATH.
+
 # List of Available Plugins
 Here's the list of plugin available in pypi.
 
