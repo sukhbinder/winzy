@@ -85,7 +85,7 @@ def test_add_alias_success(monkeypatch, tmp_path):
 
     # Check file content
     content = batch_file_path.read_text()
-    assert content == "@echo off\necho hello\n"
+    assert content == "@echo off\necho hello %*\n"
 
 
 def test_add_alias_already_exists_input_no(monkeypatch, tmp_path, capfd):
@@ -94,7 +94,7 @@ def test_add_alias_already_exists_input_no(monkeypatch, tmp_path, capfd):
     local_bin_dir = home_dir / ".local" / "bin"
     local_bin_dir.mkdir(parents=True)
     batch_file = local_bin_dir / "existing.bat"
-    batch_file.write_text("@echo off\nexisting command\n")
+    batch_file.write_text("@echo off\nexisting command %*\n")
 
     # Mock input to return "n" (no overwrite)
     monkeypatch.setattr("builtins.input", lambda _: "n")
@@ -114,7 +114,7 @@ def test_add_alias_already_exists_input_yes(monkeypatch, tmp_path):
     local_bin_dir = home_dir / ".local" / "bin"
     local_bin_dir.mkdir(parents=True)
     batch_file = local_bin_dir / "existing.bat"
-    batch_file.write_text("@echo off\nexisting command\n")
+    batch_file.write_text("@echo off\nexisting command %*\n")
 
     # Mock input to return "y" (yes overwrite)
     monkeypatch.setattr("builtins.input", lambda _: "y")
@@ -127,7 +127,7 @@ def test_add_alias_already_exists_input_yes(monkeypatch, tmp_path):
 
     # Check that the file was overwritten
     content = batch_file.read_text()
-    assert content == "@echo off\ntest command\n"
+    assert content == "@echo off\ntest command %*\n"
 
 
 def test_install_cmd_with_mock():
@@ -181,7 +181,6 @@ def test_main_with_install_command():
     ) as mock_install_plugin, mock.patch("winzy.plugins.load_plugins"), mock.patch(
         "winzy.plugins.run_module"
     ):  # Mock run_module to prevent actual pip execution
-
         main()
 
         # Check that install_plugin was called with correct arguments
@@ -201,12 +200,11 @@ def test_main_with_add_alias_command(monkeypatch, tmp_path):
     with mock.patch("sys.argv", ["winzy", "add-alias", "test=echo test"]), mock.patch(
         "winzy.plugins.load_plugins"
     ), monkeypatch.context() as m:
-
         m.setattr("os.path.expanduser", lambda x: str(home_dir))
         m.setattr(
             "builtins.input", lambda _: "y"
         )  # Automatically confirm overwrite if needed
-
+        m.setattr("os.name", lambda _: "nt")
         main()
 
         # Check if the batch file was created
@@ -215,4 +213,4 @@ def test_main_with_add_alias_command(monkeypatch, tmp_path):
 
         # Check the content
         content = batch_file_path.read_text()
-        assert "@echo off\necho test\n" in content
+        assert "@echo off\necho test %*\n" in content
