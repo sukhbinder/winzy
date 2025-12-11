@@ -40,7 +40,7 @@ def add_alias(args):
             return
 
     # Create the batch file content
-    batch_content = f"@echo off\n{command}\n"
+    batch_content = f"@echo off\n{command} %*\n"
 
     # Write the batch file
     with open(batch_file_path, "w") as f:
@@ -97,14 +97,18 @@ def main():
     install_parser.add_argument("packages", nargs="+")
     install_parser.set_defaults(func=install_cmd)
 
-    # add add-alias command
-    alias_parser = subparser.add_parser(
-        "add-alias", description="Create a command alias by generating a batch file"
-    )
-    alias_parser.add_argument(
-        "alias_cmd", help="Alias command in format 'alias=command', e.g., 'ls=dir $*'"
-    )
-    alias_parser.set_defaults(func=add_alias)
+    # Only add this is in windows system
+    if os.name != "posix":
+        # add add-alias command
+        alias_parser = subparser.add_parser(
+            "add-alias", description="Create a command alias by generating a batch file"
+        )
+        alias_parser.add_argument(
+            "alias_cmd",
+            help="Alias command in format 'alias=command', e.g., 'ls=dir $*'",
+        )
+        alias_parser.set_defaults(func=add_alias)
+
     load_plugins()
 
     pm.hook.register_commands(subparser=subparser)
